@@ -6,7 +6,7 @@ int main(void)
 {
 
     char myName[] = "\nJay Huang ";
-    char labNum[] = "Final Project\n\n";
+    char labNum[] = "CS 350 - Final Project\n\n";
     printf("%s%s\n", myName, labNum);
 
     char *registers[32] = {"$0", "$at", "$v0", "$v1",
@@ -18,7 +18,7 @@ int main(void)
                            "$t8", "$t9", "$k0", "$k1",
                            "$gp", "$sp", "$fp", "$ra"};
 
-    typedef unsigned int byte;
+    typedef unsigned char byte;
     struct R_Format
     {
         byte rs, rt, rd, shamt, funct;
@@ -139,8 +139,8 @@ int main(void)
             }
             else if (rFunc == JR)
             {
-                printf("x%x   jr   %4s               (s/f: x%02x, x%02x = dec %d, %d)\n", pc, registers[rsIndex], rShamt, rFunc, rShamt, rFunc);
-                //printf("x%x   jr   %4s, %4s,%4s    (s/f: x%02x, x%02x = dec %d, %d)\n", pc, registers[rdIndex], registers[rsIndex], registers[rtIndex], rShamt, rFunc, rShamt, rFunc);
+                //printf("x%x   jr   %4s               (s/f: x%02x, x%02x = dec %d, %d)\n", pc, registers[rsIndex], rShamt, rFunc, rShamt, rFunc);
+                printf("x%x   jr   %4s, %4s,%4s    (s/f: x%02x, x%02x = dec %d, %d)\n", pc, registers[rdIndex], registers[rsIndex], registers[rtIndex], rShamt, rFunc, rShamt, rFunc);
             }
             else if (rFunc == DIV)
             {
@@ -229,8 +229,6 @@ int main(void)
                 else
                 {
                     printf("x%x   nop  %4s, %4s, x%4.4x    (dec %6d)\n", pc, registers[rsIndex], registers[rtIndex], immdu, immd);
-
-                    printf("--------- I-TYPE Instruction Invalid ---------\n");
                 }
             }
         }
@@ -240,7 +238,7 @@ int main(void)
     }
 
     printf("\n\nProgram ending...\n\n");
-    // printf("\n");
-    // fclose(datafile);
+    printf("\n");
+    fclose(datafile);
     return 0;
 }
